@@ -68,4 +68,14 @@
   ![파라미터 전달 화면](./images/result_param.png) 
 
 ---
+5. 추가 구현 기능
+1) POST /greeting 엔드포인트 구현:
+* @PostMapping 어노테이션을 활용해 쿼리 파라미터(message)를 전달받아 새로운 인사말로 응답
+* 동일한 URL(/greeting)이더라도 HTTP Method(GET, POST)에 따라 스프링이 각각의 매핑 메서드로 분기
+* 브라우저 주소창에서는 동작하지 않음을 확인
+  * **`curl.exe -X POST ...`** 을 롱해 POST 요청 전송 및 검증
 
+---
+6. 느낀 점
+* Spring Boot가 제공하는 내장 톰캣과 Jackson 라이브러리로 XML 설정 없이 쉽고 빠르게 RESTful API 구축 가능
+* `@RestController`가 싱글톤 빈으로 생성 &rarr; 전역 `AtomicLong` 카운터를 공유 &rarr; 멀티스레드 환경에서도 안전하게 id 누적 증가
